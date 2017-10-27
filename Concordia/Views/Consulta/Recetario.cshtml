@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "Recetario";
+}
+<br />
+<div class="panel panel-primary">
+    <div class="panel-body">
+        <div id="alert_placeholder"></div>
+        INGRESO A RECETARIO
+        <form role="form" id="Formulario" method="post" action="">
+            <table class="table table-striped">
+                <tr>
+                    <td>
+                        Número de Orden
+                    </td>
+                    <td><input type="number" maxlength="6" placeholder="Número de Orden" class="form-contol numero" id="NumeroOrden" /></td>
+                    <td>Tipo de documento</td>
+                    <td>
+                        <select class="form-control" id="tipoDocumento">
+                            <option></option>
+                            <option>Cédula de Ciudadania</option>
+                            <option>Cédula de Extranjeria</option>
+                            <option>Tarjeta de Identidad</option>
+                            <option>Registro Civil</option>
+                        </select>
+                    </td>
+                    <td>Número de documento</td>
+                    <td><input type="number" maxlength="10" placeholder="Número de Documento" class="form-contol" id="NumeroDocumento" /></td>
+                </tr>
+                <tr>
+                    <td>Medicamento</td>
+                    <td><input type="text" class="form-control" id="PrimerNombre" /></td>
+                    <td>Cantidad</td>
+                    <td><input type="text" class="form-control" id="SegundoNombre" /></td>
+                    <td>Dosis</td>
+                    <td><input type="text" class="form-control" id="SegundoNombre" /></td>
+                </tr>
+                <tr>
+                    <td colspan="4" align="right">
+                        <input type="submit" value="Imprimir" class="btn-primary" />
+                        <input type="submit" value="Añadir" class="btn-primary" />
+                        <input type="submit" value="Guardar" class="btn-primary" />
+                    </td>
+
+
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+<script>
+
+
+    });
+    $('.numero').keyup(function () {
+        this.value = this.value.replace(/[^0-9\.]/g, '');
+
+    });
+
+
+    });
+    $('#Recetario').submit(function (evt) {
+        if ($('#NumeroDocumento').val().length < 6){
+            bootstrap_alert.warning('El numero de documento .........')
+            alert('El numero de documento debe tener minimo seis digitos')
+            return false;
+        }
+
+    });
+
+    bootstrap_alert=function(){};
+    bootstrap_alert.warning = function (message) {
+        $('#alert_placeholder').
+html('<div class="alert alert-danger"><a class="close" data-dismiss="alert">x</a>>span>'
++message + '</spant></div>');
+    };
+
+    $.validate({
+        validateOnBlur: false, //disable validation when input looses
+        errorMessagePosition: 'top',//instead of 'inline' which is default
+        scrollToTopOnError: true,//set this property to true on longer forms
+        languaje: spanishLanguaje
+    });
+
+
+</script>
+<h2>Recetario</h2>
+

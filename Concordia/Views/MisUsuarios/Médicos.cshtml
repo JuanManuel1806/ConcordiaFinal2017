@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Médicos";
+}
+<br />
+<div class="panel panel-primary">
+    <div class="panel-body">
+        <h1>Ingreso Médico</h1>
+        <form role="form" method="post" action="">
+            <table class="table table-striped">
+                <tr>
+                    <td>Número tarjeta profesional</td>
+                    <td><input type="number" maxlength="10" placeholder="Número de Documento"class="form-contol" id="NumeroDocumento" /></td>
+                </tr>
+                <tr>
+                    <td>Primer Nombre</td>
+                    <td><input type="text" class="form-control" id="PrimerNombre" /></td>
+                    <td>Segundo Nombre</td>
+                    <td><input type="text" class="form-control" id="SegundoNombre" /></td>
+                </tr>
+                <tr>
+                    <td>Primer Apellido</td>
+                    <td><input type="text" class="form-control" id="PrimerApellido" /></td>
+                    <td>Segundo Apellido</td>
+                    <td><input type="text" class="form-control" id="SegundoApellido" /></td>
+                </tr>
+                <tr>
+
+                    <td>Especialidad</td>
+                    <td>
+                        <select class="form-control" id="tipoDocumento">
+                            <option></option>
+                            <option>Médico general</option>
+                            <option>Médico cirugía</option>
+                            <option>SSO</option>
+                            </select>
+                    </td>
+                    <td>Disponibilidad</td>
+                    <td>
+                        <select class="form-control" id="tipoDocumento">
+                            <option></option>
+                            <option>Mañana</option>
+                            <option>Tarde</option>
+                            <option>Noche</option>
+                            </select>
+                    </td>
+                    <tr>
+                    <td colspan="4"> </br></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="right">
+                        <input type="submit" value="Nuevo" class="btn-primary" />
+                    </td>
+                    <td colspan="2" align="right">
+                        <input type="submit" value="Guardar" class="btn-primary" />
+                    </td>
+                    <tr>
+                    <td colspan="2" align="right">
+                        <input type="submit" value="Modificar" class="btn-primary" />
+                    <td colspan="2" align="right">
+                        <input type="submit" value="Borrar" class="btn-primary" />
+                    </td>
+                        </tr>       
+                    </td>
+                </tr>
+            </table>
+        </form>   
+    </div>
+</div>

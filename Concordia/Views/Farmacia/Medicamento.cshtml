@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Medicamento";
+}
+<br />
+<div class="panel panel-primary">
+    <div class="panel-body">
+        <h1>Ingreso de Medicamento</h1>
+        <form role="form" method="post" action="">
+            <table class="table table-striped">
+                <tr>
+
+                    <td> Nombre del Medicamento</td>
+                    <td><input type="Text" class="form-contol"></td>
+                </tr>
+
+                <tr>
+
+                    <td>Presentacion</td>
+                    <td><input type="Text" class="form-contol"></td>
+                   
+                </tr>
+
+                <tr>
+                    <td>Dosis</td>
+                    <td><input type="Text" class="form-contol"></td>
+                </tr>
+                <tr>
+                    <td>Efectos Secundarios</td>
+                    <td><input type="Text" class="form-contol"></td>
+                </tr>
+                <tr>
+                    <td colspan="4" align="right">
+
+
+                        <input type="submit" value="Guardar" class="btn-primary" />
+                    </td>
+            </table>
+        </form>
+    </div>
+</div>
+<script>
+    $.validate({
+        validateOnBlur: false, //disable validation when input looses
+        errorMessagePosition: 'top',//instead of 'inline' which is default
+        scrollToTopOnError: true,//set this property to true on longer forms
+        languaje: spanishLanguaje
+    });
+</script>
+<h2>Medicamento</h2>

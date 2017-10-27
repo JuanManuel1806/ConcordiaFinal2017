@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "Agenda";
+}
+<br />
+<div class="panel panel-primary">
+    <div class="panel-body">
+        <div id="alert_placeholder"></div>
+        <h1><a>Ingreso de Agenda</a></h1>
+        <form role="form" method="post" action="">
+            <table class="table table-striped">
+                <tr>
+                    <td> Usuario</td>
+                    <td><input type="Text" class="form-contol"></td>
+                </tr>
+                <tr>
+                    <td>Medico</td>
+                    <td><input type="Text" class="form-contol"></td>
+                </tr>
+                <tr>
+                    <td>Estado</td>
+                    <td><input type="Text" class="form-contol"></td>
+                </tr>
+                <tr>
+                    <td>Turno</td>
+                    <td><input type="Text" class="form-contol"></td>
+                </tr>
+                <tr>
+                    <td>Cita</td>
+                    <td><input type="Text" class="form-contol"></td>
+                </tr>
+                <tr>
+                    <td colspan="4" align="right">
+                        <input type="submit" value="Modificar" class="btn-primary" />
+
+                        <input type="submit" value="Guardar" class="btn-primary" />
+                        <input type="submit" value="Borrar" class="btn-primary" />
+                        <input type="submit" value="Imprimir" class="btn-primary" />
+                    </td>
+            </table>
+        </form>
+    </div>
+</div>
+
+<script>
+    $.validate({
+        validateOnBlur: false, //disable validation when input looses
+        errorMessagePosition: 'top',//instead of 'inline' which is default
+        scrollToTopOnError: true,//set this property to true on longer forms
+        languaje: spanishLanguaje
+    });
+</script>
+<h2>Agenda</h2>
+

@@ -1,0 +1,131 @@
+﻿@{
+    ViewBag.Title = "Pacientes";
+}
+<br />
+<div class="panel panel-primary">
+    <div class="panel-body">
+        <h1>Ingreso de Pacientes</h1>
+        <form role="form" method="post" action="">
+            <table class="table table-striped">
+                <tr>
+
+                    <td>Tipo de documento</td>
+                    <td>
+                        <select class="form-control" id="tipoDocumento">
+                            <option></option>
+                            <option value="1">Cédula de Ciudadania</option>
+                            <option value="2">Tarjeta de Identidad</option>
+                            <option value="3">Registro Civil</option>
+                            <option value="4"Adulto sin identificación</option>
+                            <option value="5"Menor sin identificación</option>
+                            <option value="6"Certificado de nacido vivo</option>
+                        </select>
+                    </td>
+                    <td>Número de documento</td>
+                    <td><input type="number" maxlength="20" placeholder="Número de Documento" class="form-contol" id="NumeroDocumento" /></td>
+                </tr>
+                <tr>
+                    <td>Primer Nombre</td>
+                    <td><input type="text" class="form-control" id="PrimerNombre" /></td>
+                    <td>Segundo Nombre</td>
+                    <td><input type="text" class="form-control" id="SegundoNombre" /></td>
+                </tr>
+                <tr>
+                    <td>Primer Apellido</td>
+                    <td><input type="text" class="form-control" id="PrimerApellido" /></td>
+                    <td>Segundo Apellido</td>
+                    <td><input type="text" class="form-control" id="SegundoApellido" /></td>
+                </tr>
+                <tr>
+                    <td>Fecha de Nacimiento</td>
+                    <td>
+                        <div class="input-group date" data-provide="datepicker">
+                            <input type="text" class="form-control">
+                            <div class="input-group-addon">
+                                <span class="glyphicon glyphicon-th"></span>
+                            </div>
+                        </div>
+                    </td>
+                    <td>Sexo</td>
+                    <td>
+                        Masculino
+                        <input type="radio" name="sexo" value="M" />&nbsp;
+                        Femenino
+                        <input type="radio" name="sexo" value="F" />
+                    </td>
+                </tr>
+                <tr>
+
+                    <td>Régimen de afiliación</td>
+                    <td>
+                        <select class="form-control" id="tipoDocumento">
+                            <option></option>
+                            <option>Subsidiado</option>
+                            <option>Contributivo</option>
+                            <option>Especial</option>
+                            <option>No afiliado</option>
+                        </select>
+                    </td>
+                    <td>EPS</td>
+                    <td>
+                        <select class="form-control" id="tipoDocumento">
+                            <option></option>
+                            <option>Savia salud</option>
+                            <option>La Nueva EPS</option>
+                            <option>Coomeva</option>
+                            <option>Sanitas</option>
+                            <option>Sura</option>
+                        </select>
+                    </td>
+                <tr>
+                    <td>Nivel SISBEN</td>
+                    <td>
+                        <select class="form-control" id="tipoDocumento">
+                            <option></option>
+                            <option>N</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Dirección de residencia</td>
+                    <td><input type="text" class="form-control" id="Dirección de residencia" /></td>
+
+                    <td>Teléfono</td>
+                    <td><input type="number" maxlength="10" placeholder="Número de Teléfono" class="form-contol" id="NumeroTelefono" /></td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="right">
+                        <input type="submit" value="Registrar" class="btn-primary" />
+                    </td>
+                    <td colspan="2" align="right">
+                        <input type="submit" value="Modificar" class="btn-primary" />
+                    </td>
+                <tr>
+                    <td colspan="2" align="right">
+                        <input type="submit" value="Baja" class="btn-primary" />
+                    <td colspan="2" align="right">
+                        <input type="submit" value="Alta" class="btn-primary" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+
+
+
+<script>
+    $('#dvFechaNacimiento').datepicker({
+        languaje: "es",
+        autoclose: true,
+        format: 'dd/mm/yyyy',
+        todayHighlight: true
+    });
+
+</script>
