@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Historial";
 }
 <br />
@@ -14,27 +13,27 @@
                 <tr>
                     <td>Numero de documento</td>
                     <td colspan="2">
-                        <input type="number" maxlength="20" placeholder="Número de Documento" class="form-contol numero" id="NumeroDocumento" />
+                        <input type="text" maxlength="20" placeholder="Número de Documento" class="form-contol numero" id="NumeroDocumento" />
                     </td>
                 </tr>
                 <tr>
                 <tr>
                     <td>Nombre</td>
                     <td colspan="3">
-                        <input type="text" maxlength="20" placeholder="Nombre" class="form-contol numero" id="Nombre" />
+                        <input type="Text" class="form-contol"></td>
                     </td>
                 </tr>
                 <tr>
                 <tr>
                     <td>Apellido</td>
                     <td colspan="3">
-                        <input type="text" maxlength="20" placeholder="Apellido" class="form-contol numero" id="Apellido" />
+                        <input type="Text" class="form-contol"></td>
                     </td>
                 </tr>
                 <tr>
                     <td>Telefono</td>
                     <td colspan="3">
-                        <input type="text" placeholder="Telefono" class="form-control" id="Telefono" />
+                        <input type="text" placeholder="Telefono" class="form-control numero" id="Telefono" />
                     </td>
                 </tr>
                 <tr>
@@ -81,9 +80,9 @@
         this.value = this.value.replace(/[^0-9\.]/g, '');
     });
 
-    $('#Historial').submit(function (evt) {
-        if ($('#NumeroDocumento').val().length < 8) {
-            bootstrap_alert.warning('El numero de documento debe tener mínimo 8 digitos')
+    $('#historial').submit(function (evt) {
+        if ($('#NumeroDocumento').val().length < 4) {
+            bootstrap_alert.warning('El numero de documento debe tener mínimo 4 digitos')
             return false;
         }
     });
@@ -91,7 +90,7 @@
     bootstrap_alert = function () { };
     bootstrap_alert.warning = function (mensage) {
         $('#alert_placeholder').
-        html('<div class = "alert alert-danger"><a class = "close" data-dismiss = "alert">x</a>>span>'
+        html('<div class = "alert alert-danger"><a class = "close" data-dismiss = "alert">x</a><span>'
         + mensage + '</spant><div>'
         );
     };

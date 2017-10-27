@@ -6,32 +6,58 @@
     <div class="panel-body">
         <div id="alert_placeholder"></div>
         <h1><a>Ingreso de Agenda</a></h1>
-        <form role="form" method="post" action="">
+        <form id="agenda" role="form" method="post" action="">
             <table class="table table-striped">
                 <tr>
-                    <td> Usuario</td>
-                    <td><input type="Text" class="form-contol"></td>
+                    <td>Documento Usuario</td>
+                    <td colspan="3">
+                        <input type="text" maxlength="20" placeholder="Documento Usuario" class="form-contol numero" id="DocumentoUsuario" /></td>
+                    <td>Usuario</td>
+                    <td>
+                        <input type="Text" class="form-contol"></td>
                 </tr>
                 <tr>
+                    <td>Documento Medico</td>
+                    <td colspan="3">
+                        <input type="text" maxlength="20" placeholder="Documento Médico" class="form-contol numero" id="DocumentoMedico" /></td>
                     <td>Medico</td>
-                    <td><input type="Text" class="form-contol"></td>
+                    <td>
+                        <input type="Text" class="form-contol"></td>
                 </tr>
                 <tr>
-                    <td>Estado</td>
-                    <td><input type="Text" class="form-contol"></td>
-                </tr>
-                <tr>
+                    <td>Tipo</td>
+                    <td colspan="3">
+                        <select>
+                            <option>Consulta</option>
+                            <option>Revición</option>
+                            <option>Diagnostico</option>
+                        </select>
                     <td>Turno</td>
-                    <td><input type="Text" class="form-contol"></td>
+                    <td colspan="3">
+                        <select>
+                            <option>Mañana</option>
+                            <option>Tarde</option>
+                        </select>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Cita</td>
-                    <td><input type="Text" class="form-contol"></td>
+                    <td>Fecha</td>
+                    <td>
+                        <div class="input-group date fecha" data-provide="datepicker">
+                            <input type="text" class="form-control">
+                            <div class="input-group-addon">
+                                <span class="glyphicon glyphicon-th"></span>
+                            </div>
+                        </div>
+                    </td>
+                    <td>Hora</td>
+                    <td>
+                        <input type="text" placeholder="Hora" class="form-contol" id="Hora" /></td>
+
                 </tr>
                 <tr>
                     <td colspan="4" align="right">
                         <input type="submit" value="Modificar" class="btn-primary" />
-
                         <input type="submit" value="Guardar" class="btn-primary" />
                         <input type="submit" value="Borrar" class="btn-primary" />
                         <input type="submit" value="Imprimir" class="btn-primary" />
@@ -42,6 +68,44 @@
 </div>
 
 <script>
+    $('.fecha').datepicker({
+        languaje: "es",
+        autoclose: true,
+        format: 'dd/mm/yyyy',
+        todayHighlight: true
+    });
+    $('.numero').keyup(function () {
+        this.value = this.value.replace(/[^0-9\.]/g, '');
+    });
+    $('#agenda').submit(function (evt) {
+        if ($('#DocumentoUsuario').val().length < 4) {
+            bootstrap_alert.warning('El numero de Documento debe tener mínimo 4 digitos')
+            return false;
+        }
+    });
+
+    bootstrap_alert = function () { };
+    bootstrap_alert.warning = function (mensage) {
+        $('#alert_placeholder').
+        html('<div class = "alert alert-danger"><a class = "close" data-dismiss = "alert">x</a><span>'
+        + mensage + '</spant><div>'
+        );
+    };
+
+    $('#agenda').submit(function (evt) {
+        if ($('#DocumentoMedico').val().length < 4) {
+            bootstrap_alert.warning('El numero de Documento debe tener mínimo 4 digitos')
+            return false;
+        }
+    });
+
+    bootstrap_alert = function () { };
+    bootstrap_alert.warning = function (mensage) {
+        $('#alert_placeholder').
+        html('<div class = "alert alert-danger"><a class = "close" data-dismiss = "alert">x</a><span>'
+        + mensage + '</spant><div>'
+        );
+    };
     $.validate({
         validateOnBlur: false, //disable validation when input looses
         errorMessagePosition: 'top',//instead of 'inline' which is default

@@ -5,11 +5,11 @@
 <div class="panel panel-primary">
     <div class="panel-body">
         <h1>Ingreso Médico</h1>
-        <form role="form" method="post" action="">
+        <form id="medico" role="form" method="post" action="">
             <table class="table table-striped">
                 <tr>
                     <td>Número tarjeta profesional</td>
-                    <td><input type="number" maxlength="10" placeholder="Número de Documento"class="form-contol" id="NumeroDocumento" /></td>
+                    <td><input type="Text" maxlength="10" placeholder="Número de Documento"class="form-contol numero" id="NumeroTarjeta" /></td>
                 </tr>
                 <tr>
                     <td>Primer Nombre</td>
@@ -66,3 +66,31 @@
         </form>   
     </div>
 </div>
+
+<script>
+    $('.numero').keyup(function () {
+        this.value = this.value.replace(/[^0-9\.]/g, '');
+    });
+
+    $('#medico').submit(function (evt) {
+        if ($('#NumeroTarjeta').val().length < 2) {
+            bootstrap_alert.warning('El numero de Referencia debe tener mínimo 2 digitos')
+            return false;
+        }
+    });
+
+    bootstrap_alert = function () { };
+    bootstrap_alert.warning = function (mensage) {
+        $('#alert_placeholder').
+        html('<div class = "alert alert-danger"><a class = "close" data-dismiss = "alert">x</a><span>'
+        + mensage + '</spant><div>'
+        );
+    };
+    $.validate({
+        validateOnBlur: false, //disable validation when input looses
+        errorMessagePosition: 'top',//instead of 'inline' which is default
+        scrollToTopOnError: true,//set this property to true on longer forms
+        languaje: spanishLanguaje
+    });
+
+</script>

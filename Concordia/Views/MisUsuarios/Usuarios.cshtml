@@ -5,7 +5,7 @@
 <div class="panel panel-primary">
     <div class="panel-body">
         <h1>Ingreso de Pacientes</h1>
-        <form role="form" method="post" action="">
+        <form id="usuario" role="form" method="post" action="">
             <table class="table table-striped">
                 <tr>
 
@@ -22,7 +22,7 @@
                         </select>
                     </td>
                     <td>Número de documento</td>
-                    <td><input type="number" maxlength="20" placeholder="Número de Documento" class="form-contol" id="NumeroDocumento" /></td>
+                    <td><input type="Text" maxlength="20" placeholder="Número de Documento" class="form-contol numero" id="NumeroDocumento" /></td>
                 </tr>
                 <tr>
                     <td>Primer Nombre</td>
@@ -94,7 +94,7 @@
                     <td><input type="text" class="form-control" id="Dirección de residencia" /></td>
 
                     <td>Teléfono</td>
-                    <td><input type="number" maxlength="10" placeholder="Número de Teléfono" class="form-contol" id="NumeroTelefono" /></td>
+                    <td><input type="Text" maxlength="10" placeholder="Número de Teléfono" class="form-contol numero" id="NumeroTelefono" /></td>
                 </tr>
                 <tr>
                     <td colspan="4"></td>
@@ -121,11 +121,36 @@
 
 
 <script>
-    $('#dvFechaNacimiento').datepicker({
+    $('.fecha').datepicker({
         languaje: "es",
         autoclose: true,
         format: 'dd/mm/yyyy',
         todayHighlight: true
+    });
+
+    $('.numero').keyup(function () {
+        this.value = this.value.replace(/[^0-9\.]/g, '');
+    });
+
+    $('#usuario').submit(function (evt) {
+        if ($('#NumeroDocumento').val().length < 2) {
+            bootstrap_alert.warning('El numero de Documenot debe tener mínimo 2 digitos')
+            return false;
+        }
+    });
+
+    bootstrap_alert = function () { };
+    bootstrap_alert.warning = function (mensage) {
+        $('#alert_placeholder').
+        html('<div class = "alert alert-danger"><a class = "close" data-dismiss = "alert">x</a><span>'
+        + mensage + '</spant><div>'
+        );
+    };
+    $.validate({
+        validateOnBlur: false, //disable validation when input looses
+        errorMessagePosition: 'top',//instead of 'inline' which is default
+        scrollToTopOnError: true,//set this property to true on longer forms
+        languaje: spanishLanguaje
     });
 
 </script>
