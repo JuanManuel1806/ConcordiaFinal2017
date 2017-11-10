@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Concordia.Models.Usuario
+@{
     ViewBag.Title = "Pacientes";
 }
 <br />
@@ -11,18 +12,22 @@
 
                     <td>Tipo de documento</td>
                     <td>
-                        <select class="form-control" id="tipoDocumento">
-                            <option></option>
-                            <option value="1">Cédula de Ciudadania</option>
-                            <option value="2">Tarjeta de Identidad</option>
-                            <option value="3">Registro Civil</option>
-                            <option value="4"Adulto sin identificación</option>
-                            <option value="5"Menor sin identificación</option>
-                            <option value="6"Certificado de nacido vivo</option>
-                        </select>
+                        @Html.DropDownListFor(u => u.tipodedocumento,
+                        (IEnumerable<SelectListItem>)ViewBag.TiposDocumento,
+                        string.Empty, new { @class = "form-control", @data_validation_errror_msg = "Debe seleccionar Tipo de Documento" })
                     </td>
                     <td>Número de documento</td>
-                    <td><input type="Text" maxlength="20" placeholder="Número de Documento" class="form-contol numero" id="NumeroDocumento" /></td>
+                    <td>
+                        @Html.TextBoxFor(u => u.numerodedocumento,
+                    new
+                    {
+                        @class = "form-control numero",
+                        @maxlength = "20",
+                        @placeholder = "Número de Documento",
+                        @data_validation = "required",
+                        @data_validation_error_msg = "Debe ingresar el numero de documento"
+                    })
+                    </td>
                 </tr>
                 <tr>
                     <td>Primer Nombre</td>
@@ -40,10 +45,18 @@
                     <td>Fecha de Nacimiento</td>
                     <td>
                         <div class="input-group date" data-provide="datepicker">
-                            <input type="text" class="form-control">
-                            <div class="input-group-addon">
+                            @Html.TextBoxFor(u => u.fechadenacimiento, "{0:dd/MM/yyyy}",
+                            new
+                            {
+                                @class = "form-control",
+                                @placeholder = "Fecha de Nacimiento",
+                                @maxlength = "10",
+                                @data_validation_error_msg = "Debe ingresar la fecha de Nacimiento",
+                            })
+                            <span
+                                class="input-group-addon">
                                 <span class="glyphicon glyphicon-th"></span>
-                            </div>
+                            </span>
                         </div>
                     </td>
                     <td>Sexo</td>

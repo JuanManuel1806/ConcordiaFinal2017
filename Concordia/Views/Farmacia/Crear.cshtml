@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Concordia.Models.Usuario
+@{
     ViewBag.Title = "Crear";
 }
 <br />
@@ -11,6 +12,11 @@
 
                     <td>Tipo de documento</td>
                     <td>
+                        @Html.DropDownListFor(u => u.tipodedocumento,
+                        (IEnumerable<SelectListItem>)ViewBag.TiposDocumento, 
+                        string.Empty, new {@class = "form-contro", @data_validation_errror_msg = "Debe seleccionar Tipo de Documento"})
+                    </td>
+                    <td>
                         <select class="form-control" id="tipoDocumento">
                             <option></option>
                             <option>Cédula de Ciudadania</option>
@@ -18,7 +24,14 @@
                         </select>
                     </td>
                     <td>Número de documento</td>
-                    <td><input type="number" maxlength="20" placeholder="Número de Documento"class="form-contol" id="NumeroDocumento" /></td>
+                    
+                    <td>
+                    @Html.TextBoxFor(u => u.numerodedocumento, 
+                    new { @class = "form-control numero", @maxlength = "20",
+                    @placeholder = "Número de Documento",
+                    @data_validation="required",
+                    @data_validation_error_msg= "Debe ingresar el numero de documento"})
+                   </td>
                 </tr>
                 <tr>
                     <td>Primer Nombre</td>
@@ -30,7 +43,13 @@
                     <td>Fecha de Nacimiento</td>
                     <td>
                         <div class="input-group date" data-provide="datepicker">
-                            <input type="text" class="form-control">
+                            @Html.TextBoxFor(u => u.fechadenacimiento, "{0:dd/MM/yyyy}",
+                            new { @class = "form-control",
+                            @placeholder = "Fecha de Nacimiento",
+                            @maxlength = "10",
+                            @data_validation_error_msg = "Debe ingresar la fecha de Nacimiento",})
+                            
+                            
                             <div class="input-group-addon">
                                 <span class="glyphicon glyphicon-th"></span>
                             </div>
