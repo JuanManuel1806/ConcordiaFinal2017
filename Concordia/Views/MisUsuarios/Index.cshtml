@@ -1,0 +1,202 @@
+﻿@model IEnumerable<Concordia.Models.Usuario>
+
+@{
+    ViewBag.Title = "Usuarios";
+}
+
+<h2>Listado de Usuarios</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table" id="usuarios">
+    <thead>
+        <tr>
+            <th>
+                Tipo de Documento
+            </th>
+            <th>
+                Número de Documento
+            </th>
+            <th>
+                Primer Nombre
+            </th>
+            <th>
+                Segundo Nombre
+            </th>
+            <th>
+                Primer Apellido
+            </th>
+            <th>
+                Segundo Apellido
+            </th>
+            <th>
+                Sexo
+            </th>
+            <th>
+                Telefono
+            </th>
+            <th>
+                Departamento
+            </th>
+            <th>
+                Ciudad
+            </th>
+            <th>
+                Dirección
+            </th>
+            <th>
+                Análisis
+            </th>
+            <th>
+                Revisiones
+            <th>
+                Medicamentos Tomados
+            </th>
+            <th>
+                Alergias Sufridas
+            </th>
+            <th>
+                &nbsp;
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipodeDocumento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.numerodedocumento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.primernombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.segundonombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.primerapellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.segundoapellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sexo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.telefono)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.departamento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ciudad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.direccion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.analisis)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.revisiones)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.medicamentostomados)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.alergiassufridas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.enfermedadespadecidas)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.IdUsuario }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.IdUsuario }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.IdUsuario })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var usuarios = $('#usuarios').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                {
+                    extend: 'excel',
+                    text: 'Excel'
+                },
+                {
+                    extend: 'print',
+                    text: 'HTML'
+                },
+                {
+                    extend: 'pdf',
+                    text: 'PDF'
+                }
+            ],
+            language: {
+                "decimal": ".",
+                "thousands": ",",
+                "processing": "<span><b>Buscando registros</b></span>",
+                "lengthMenu": "Mostrar _MENU_ registros por página",
+                "zeroRecords": "No se encontraron registros",
+                "info": "Mostrando página _PAGE_ de _PAGES_",
+                "infoEmpty": "No hay registros disponibles",
+                "infoFiltered": "(Filtrado de _MAX_ registros totales)",
+                "search": "Buscar:",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Último",
+                    "next": "Próximo",
+                    "previous": "Anterior"
+                }
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var usuarios = $('#Usuarios').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                {
+                    extend: 'excel',
+                    text: 'Excel'
+                },
+                {
+                    extend: 'print',
+                    text: 'HTML'
+                },
+                {
+                    extend: 'pdf',
+                    text: 'PDF'
+                }
+            ],
+            language: {
+                "decimal": ".",
+                "thousands": ",",
+                "processing": "<span><b>Buscando registros</b></span>",
+                "lengthMenu": "Mostrar _MENU_ registros por página",
+                "zeroRecords": "No se encontraron registros",
+                "info": "Mostrando página _PAGE_ de _PAGES_",
+                "infoEmpty": "No hay registros disponibles",
+                "infoFiltered": "(Filtrado de _MAX_ registros totales)",
+                "search": "Buscar:",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Último",
+                    "next": "Próximo",
+                    "previous": "Anterior"
+                }
+            }
+        });
+    });
+</script>
+

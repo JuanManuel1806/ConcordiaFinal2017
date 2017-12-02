@@ -17,9 +17,9 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
-    <IISExpressUseClassicPipelineMode />
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -159,14 +159,20 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ConsultaController.cs" />
-    <Compile Include="Controllers\FarmaciaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MisUsuariosController.cs" />
+    <Compile Include="Datos\Ciudad.cs" />
+    <Compile Include="Datos\Departamento.cs" />
+    <Compile Include="Datos\OngContext.cs" />
+    <Compile Include="Datos\OngInitializer.cs" />
+    <Compile Include="Datos\Tipodocumento.cs" />
+    <Compile Include="Datos\Usuario.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Ciudad.cs" />
+    <Compile Include="Models\Departamento.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Tipodocumento.cs" />
     <Compile Include="Models\Usuario.cs" />
@@ -175,34 +181,62 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Borrador.html" />
+    <Content Include="Content\assets\demo.css" />
+    <Content Include="Content\assets\form-basic.css" />
+    <Content Include="Content\assets\form-labels-on-top.css" />
+    <Content Include="Content\assets\form-login.css" />
+    <Content Include="Content\assets\form-mini.css" />
+    <Content Include="Content\assets\form-register.css" />
+    <Content Include="Content\assets\form-search.css" />
+    <Content Include="Content\assets\form-validation.css" />
+    <Content Include="Scripts\bootstrap-datepicker.es.min.js" />
     <Content Include="Content\bootstrap-datepicker.min.css" />
+    <Content Include="Content\bootstrap-datepicker3.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\buttons.dataTables.min.css" />
     <Content Include="Content\Estilo.css" />
+    <Content Include="Content\jquery.dataTables.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Imagenes\logoconcordia.jpg" />
+    <Content Include="images\sort_asc.png" />
+    <Content Include="images\sort_asc_disabled.png" />
+    <Content Include="images\sort_both.png" />
+    <Content Include="images\sort_desc.png" />
+    <Content Include="images\sort_desc_disabled.png" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\bootstrap-datepicker.min.css.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\buttons.html5.min.js" />
+    <Content Include="Scripts\buttons.print.min.js" />
+    <Content Include="Scripts\chart.loader.js" />
+    <Content Include="Scripts\dataTables.buttons.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
+    <Content Include="Scripts\jquery.dataTables.min.js" />
+    <Content Include="Scripts\jquery.form-validator.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jszip.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\pdfmake.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\vfs_fonts.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -227,16 +261,9 @@
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Farmacia\Crear.cshtml" />
-    <Content Include="Views\Farmacia\Inventario.cshtml" />
-    <Content Include="Views\Farmacia\Despacho.cshtml" />
     <Content Include="Views\MisUsuarios\Médicos.cshtml" />
     <Content Include="Views\MisUsuarios\Usuarios.cshtml" />
-    <Content Include="Views\Consulta\Recetario.cshtml" />
-    <Content Include="Views\Farmacia\Medicamento.cshtml" />
-    <Content Include="Views\Consulta\Historial.cshtml" />
     <Content Include="Views\MisUsuarios\Agenda.cshtml" />
-    <Content Include="Views\Consulta\Atencion.cshtml" />
     <Content Include="Views\MisUsuarios\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

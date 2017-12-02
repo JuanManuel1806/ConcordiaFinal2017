@@ -6,15 +6,13 @@
 <div class="panel panel-primary">
     <div class="panel-body">
         <h1>Ingreso de Pacientes</h1>
-        <form id="usuario" role="form" method="post" action="">
+        <form id="usuario" role="form" method="post" action="/MisUsuarios/Crear">
             <table class="table table-striped">
                 <tr>
 
                     <td>Tipo de documento</td>
                     <td>
-                        @Html.DropDownListFor(u => u.tipodedocumento,
-                        (IEnumerable<SelectListItem>)ViewBag.TiposDocumento,
-                        string.Empty, new { @class = "form-control", @data_validation_errror_msg = "Debe seleccionar Tipo de Documento" })
+                        @Html.DropDownListFor(u => u.tipodocumento.IdTipodocumento, (IEnumerable<SelectListItem>)ViewBag.TiposDocumento, string.Empty, new { @class = "form-control", @data_validation_errror_msg = "Debe seleccionar Tipo de Documento" })
                     </td>
                     <td>Número de documento</td>
                     <td>
@@ -31,21 +29,31 @@
                 </tr>
                 <tr>
                     <td>Primer Nombre</td>
-                    <td><input type="text" class="form-control" id="PrimerNombre" /></td>
-                    <td>Segundo Nombre</td>
-                    <td><input type="text" class="form-control" id="SegundoNombre" /></td>
-                </tr>
-                <tr>
-                    <td>Primer Apellido</td>
-                    <td><input type="text" class="form-control" id="PrimerApellido" /></td>
-                    <td>Segundo Apellido</td>
-                    <td><input type="text" class="form-control" id="SegundoApellido" /></td>
-                </tr>
-                <tr>
-                    <td>Fecha de Nacimiento</td>
                     <td>
-                        <div class="input-group date" data-provide="datepicker">
-                            @Html.TextBoxFor(u => u.fechadenacimiento, "{0:dd/MM/yyyy}",
+                        @Html.TextBoxFor(u => u.primernombre,
+                     new
+                    {
+                        @class = "form-control",
+                        @placeholder = "Primer Nombre",
+                        @maxlength = "100",
+                        @data_validation = "required",
+                        @data_validation_error_msg = "Debe ingresar el primer nombre"
+                    })
+                </td>
+                <td>Segundo Nombre</td>
+                <td>@Html.TextBoxFor(u => u.segundonombre, new { @class = "form-control", @placeholder = "Segundo Nombre", @maxlength = "100" })</td>
+            </tr>
+            <tr>
+                <td>Primer Apellido</td>
+                <td>@Html.TextBoxFor(u => u.primerapellido, new { @class = "form-control", @placeholder = "Primer Apellido", @maxlength = "100", @data_validation = "required", data_validation_error_msg = "Debe ingresar el primer apellido" })</td>
+                <td>Segundo Apellido</td>
+                <td>@Html.TextBoxFor(u => u.segundoapellido, new { @class = "form-control", @placeholder = "Segundo Apellido", @maxlength = "100" })</td>
+            </tr>
+            <tr>
+                <td>Fecha de Nacimiento</td>
+                <td>
+                    <div class="input-group date" data-provide="datepicker">
+                        @Html.TextBoxFor(u => u.fechadenacimiento, "{0:dd/MM/yyyy}",
                             new
                             {
                                 @class = "form-control",
@@ -53,87 +61,111 @@
                                 @maxlength = "10",
                                 @data_validation_error_msg = "Debe ingresar la fecha de Nacimiento",
                             })
-                            <span
-                                class="input-group-addon">
-                                <span class="glyphicon glyphicon-th"></span>
-                            </span>
-                        </div>
-                    </td>
-                    <td>Sexo</td>
-                    <td>
-                        Masculino
-                        <input type="radio" name="sexo" value="M" />&nbsp;
-                        Femenino
-                        <input type="radio" name="sexo" value="F" />
-                    </td>
-                </tr>
-                <tr>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </td>
+                <td>Sexo</td>
+                <td>
+                    Masculino
+                    @Html.RadioButtonFor(u => u.Sexo, "M")&nbsp;
+                    Femenino
+                    @Html.RadioButtonFor(u => u.Sexo, "F")
+                </td>
+            </tr>
+            <tr>
+                <td>Departamento</td>
+                <td>
+                    @Html.DropDownListFor(u => u.departamento.IdDepartamento,
+                        (IEnumerable<SelectListItem>)ViewBag.Departamentos,
+                        string.Empty, new { @class = "form-control", @data_validation_errror_msg = "Debe seleccionar un Departamento" })
 
-                    <td>Régimen de afiliación</td>
-                    <td>
-                        <select class="form-control" id="tipoDocumento">
-                            <option></option>
-                            <option>Subsidiado</option>
-                            <option>Contributivo</option>
-                            <option>Especial</option>
-                            <option>No afiliado</option>
-                        </select>
-                    </td>
-                    <td>EPS</td>
-                    <td>
-                        <select class="form-control" id="tipoDocumento">
-                            <option></option>
-                            <option>Savia salud</option>
-                            <option>La Nueva EPS</option>
-                            <option>Coomeva</option>
-                            <option>Sanitas</option>
-                            <option>Sura</option>
-                        </select>
-                    </td>
-                <tr>
-                    <td>Nivel SISBEN</td>
-                    <td>
-                        <select class="form-control" id="tipoDocumento">
-                            <option></option>
-                            <option>N</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Dirección de residencia</td>
-                    <td><input type="text" class="form-control" id="Dirección de residencia" /></td>
+                </td>
 
-                    <td>Teléfono</td>
-                    <td><input type="Text" maxlength="10" placeholder="Número de Teléfono" class="form-contol numero" id="NumeroTelefono" /></td>
-                </tr>
-                <tr>
-                    <td colspan="4"></td>
-                </tr>
-                <tr>
-                    <td colspan="2" align="right">
-                        <input type="submit" value="Registrar" class="btn-primary" />
-                    </td>
-                    <td colspan="2" align="right">
-                        <input type="submit" value="Modificar" class="btn-primary" />
-                    </td>
-                <tr>
-                    <td colspan="2" align="right">
-                        <input type="submit" value="Baja" class="btn-primary" />
-                    <td colspan="2" align="right">
-                        <input type="submit" value="Alta" class="btn-primary" />
-                    </td>
-                </tr>
-            </table>
-        </form>
-    </div>
+                <td>Ciudad</td>
+                <td>
+                    @Html.DropDownListFor(u => u.ciudad.IdCiudad,
+                        (IEnumerable<SelectListItem>)ViewBag.Ciudads,
+                        string.Empty, new { @class = "form-control", @data_validation_errror_msg = "Debe seleccionar Una Ciudad" })
+                </td>
+
+            </tr>
+            <tr>
+                <td>Dirección de residencia</td>
+                <td>@Html.TextBoxFor(u => u.direccion, new { @class = "form-control", @placeholder = "Dirección de Residencia", @maxlength = "50", @data_validation = "required", data_validation_error_msg = "Debe ingresar la Dirección de Residencia" })</td>
+                <td>Teléfono</td>
+                <td>@Html.TextBoxFor(u => u.telefono, new { @class = "form-control", @placeholder = "Teléfono", @minlength = "7", @maxlength = "13", @data_validation = "required", data_validation_error_msg = "Debe ingresar el Número de Teléfono" })</td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    Análisis
+                    <br />
+                    @Html.TextAreaFor(u => u.analisis, 4, 150, new { @class = "form-control", @placeholder = "Análisis", @minlength = "10", @maxlength = "500", @data_validation = "required", data_validation_error_msg = "Debe ingresar el Análisis" })
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    Revisiones
+                    <br />
+                    @Html.TextAreaFor(u => u.revisiones, 4, 150, new { @class = "form-control", @placeholder = "Revisiones", @minlength = "10", @maxlength = "500", @data_validation = "required", data_validation_error_msg = "Debe ingresar la Revision" })
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    Medicamentos tomados
+                    <br />
+                    @Html.TextAreaFor(u => u.medicamentostomados, 4, 150, new { @class = "form-control", @placeholder = "Medicamentos Tomados", @minlength = "10", @maxlength = "500", @data_validation = "required", data_validation_error_msg = "Debe ingresar los Medicamentos Tomados" })                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <br />
+                    @Html.TextAreaFor(u => u.alergiassufridas, 4, 150, new { @class = "form-control", @placeholder = "Alergias Sufridas", @minlength = "10", @maxlength = "500", @data_validation = "required", data_validation_error_msg = "Debe ingresar las Alergias Sufridas" })
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    Enfermedades padecidas
+                    Revisiones
+                    <br />
+                    @Html.TextAreaFor(u => u.enfermedadespadecidas, 4, 150, new { @class = "form-control", @placeholder = "Enfermedades Padecidas", @minlength = "10", @maxlength = "500", @data_validation = "required", data_validation_error_msg = "Debe ingresar las Enfermedades Padecidas" })
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4"></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="right">
+                    @Html.HiddenFor(u => u.IdUsuario)
+                    <input type="submit" value="Registrar" class="btn-primary" />
+                </td>
+                <td colspan="2" align="right">
+                    <input type="submit" value="Modificar" class="btn-primary" />
+                </td>
+            <tr>
+                <td colspan="2" align="right">
+                    <input type="submit" value="Baja" class="btn-primary" />
+                <td colspan="2" align="right">
+                    <input type="submit" value="Alta" class="btn-primary" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
 </div>
 
-
-
 <script>
+    var spanishLanguage = {
+        errorTitle: 'Hay datos incorrectos en el formulario'
+    }
+
+    $.validate({
+        validateOnBlur: false, // disable validation when input looses focus
+        errorMessagePosition: 'top', // Instead of 'inline' which is default
+        scrollToTopOnError: false, // Set this property to true on longer forms
+        language: spanishLanguage
+    });
+
     $('.fecha').datepicker({
         languaje: "es",
         autoclose: true,
@@ -147,9 +179,53 @@
 
     $('#usuario').submit(function (evt) {
         if ($('#NumeroDocumento').val().length < 2) {
-            bootstrap_alert.warning('El numero de Documenot debe tener mínimo 2 digitos')
+            bootstrap_alert.warning('El numero de Documento debe tener mínimo 2 digitos')
             return false;
         }
+        if (!$('#Sexo:checked').val() != "") {
+            bootstrap_alert.warning('Debe seleccionar el sexo');
+            return false;
+        }
+
+        event.preventDefault();
+        var formData = new FormData(this);
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("CrearAJAX", "MisUsuarios")',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                if (response.mensaje == "") {
+                    if ($('#IdUsuario').val() == "0") {
+                        $('#numerodedocumento').val("");
+                        $('#TipodeDocumento_IdTipoDocumento').val("");
+                        $('#primernombre').val("");
+                        $('#segundonombre').val("");
+                        $('#primerapellido').val("");
+                        $('#SegundoApellido').val("");
+                        $('#fechadenacimiento').val("");
+                        $("input[name='Sexo']").prop("checked", false);
+                        $('#telefono').val("");
+                        $('#Departamento_IdDepartamento').val("");
+                        $('#Ciudad_IdCiudad').val("");
+                        $('#direccion').val("");
+                        $('#analisis').val("");
+                        $('#revisiones').val("");
+                        $('#medicamentostomados').val("");
+                        $('#alergiassufridas').val("");
+                        $('#enfermedadespadecidas').val("");
+                    }
+
+                    $('#confirmacionAlmacenamientoMisUsuarios').modal('show');
+                } else {
+                    bootstrap_alert.warning(response.mensaje);
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                bootstrap_alert.warning("Error al almacenar el usuario.");
+            }
+        });
     });
 
     bootstrap_alert = function () { };
